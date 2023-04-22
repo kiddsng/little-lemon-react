@@ -2,8 +2,8 @@ import logo from "../logo.svg";
 
 const Nav = () => {
     return (
-        <>
-            <img src={logo} alt="Logo" />
+        <nav className="Nav">
+            <img className="Nav-logo" src={logo} alt="Logo" />
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
@@ -12,7 +12,7 @@ const Nav = () => {
                 <li><a href="#">Order Online</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
-        </>
+        </nav>
     );
 };
 
