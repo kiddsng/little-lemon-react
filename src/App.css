@@ -5,14 +5,27 @@
 }
 
 .App {
+  max-width: 1440px;
+  margin: 0px auto;
   text-align: center;
+}
+
+.Button {
+  width: 150px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #F4CE14;
+  font-weight: bold;
 }
 
 /* Navigation bar */
 
 .Nav {
+  max-width: 960px;
+  margin: 0px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 4em;
 }
 
@@ -27,63 +40,100 @@
   list-style-type: none;
 }
 
-.Nav li a {
+.Nav-item {
   display: inline-block;
   padding: 20px;
   margin: 0 20px;
   text-align: center;
   text-decoration: none;
   color: black;
+  font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 /* Header section */
 
-.Header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header {
+  max-width: 960px;
+  margin: 0px auto;
   padding: 3em 4em;
-  flex-wrap: wrap;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
   background-color: #495E57;
   color: white;
 }
 
-.Header-info-section {
+.Header-info {
   flex: 60%;
   width: 15em;
-  margin-bottom: 1em;
   text-align: left;
   font-weight: bold;
+  margin-bottom: 1em;
 }
 
-.Header-info-section h1 {
+.Header-info h1 {
   color: #F4CE14;
 }
 
-.Header-info-section p {
+.Header-info p {
   width: 240px;
 }
 
-.Header-info-section button {
-  width: 150px;
-  height: 40px;
-  border: 1px solid black;
-  border-radius: 4px;
-  background-color: #F4CE14;
-  font-weight: bold;
-}
-
-.Header-image-section {
+.Header-image {
   flex: 40%;
   text-align: center;
 }
 
-.Header-image {
+.Header-image img {
   width: 14em;
   height: 14em;
   border-radius: 16px;
 }
 
 /* Main section */
+main {
+  max-width: 960px;
+  margin: 0px auto;
+  padding: 0 4em;
+}
+
+.Main-header, .Main-menu {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.Food-item {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 400px;
+  text-align: left;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #EDEFEE;
+  margin-bottom: 1em;
+}
+
+.Food-item img {
+  width: 100%;
+  max-height: 140px;
+}
+
+.Food-item-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Food-item-price {
+  color: #F4CE14;
+}
+
+.Food-item strong {
+  margin-top: auto;
+}
