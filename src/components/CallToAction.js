@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ShortDescription from "./ShortDescription";
 
 const CallToAction = () => {
@@ -6,12 +7,12 @@ const CallToAction = () => {
 
     return (
         <header>
-            <section className="Header-info">
+            <section className="header-info">
                 <h1>Little Lemon</h1>
                 <ShortDescription location={location} description={description} />
-                <button className="Button">Reserve a Table</button>
+                <button className="button"><Link to="/booking" className="reserve-text">Reserve a Table</Link></button>
             </section>
-            <section className="Header-image">
+            <section className="header-image">
                 <img src={require("../assets/restaurant_food.jpg")} alt="Little Lemon restaurant" />
             </section>
         </header>

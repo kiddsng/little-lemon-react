@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
     return (
-        <nav className="Nav">
-            <img className="Nav-logo" src={logo} alt="Logo" />
+        <nav className="nav-bar">
+            <img className="nav-logo" src={logo} alt="Logo" />
             <ul>
-                <li><Link to="/" className="Nav-item">Home</Link></li>
-                <li><Link to="/" className="Nav-item">About</Link></li>
-                <li><Link to="/" className="Nav-item">Menu</Link></li>
-                <li><Link to="/booking" className="Nav-item">Reservations</Link></li>
-                <li><Link to="/" className="Nav-item">Order Online</Link></li>
-                <li><Link to="/" className="Nav-item">Login</Link></li>
+                <li><Link to="/" className="nav-item">Home</Link></li>
+                <li><Link to="/" className="nav-item">About</Link></li>
+                <li><Link to="/" className="nav-item">Menu</Link></li>
+                <li><Link to="/booking" className="nav-item">Reservations</Link></li>
+                <li><Link to="/" className="nav-item">Order Online</Link></li>
+                <li><Link to="/" className="nav-item">Login</Link></li>
             </ul>
         </nav>
     );

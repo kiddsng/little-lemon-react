@@ -27,18 +27,18 @@ const specials = [
 const Specials = () => {
     return (
         <main>
-           <section className="Main-header">
+           <section className="main-header">
                 <h1>This week's specials!</h1>
-                <button className="Button">Online Menu</button>
+                <button className="button">Online Menu</button>
            </section>
-           <section className="Main-menu">
-                {specials.map((special, index) => {
+           <section className="main-menu">
+                {specials.map(special => {
                     return (
-                        <div key={special.id} id={special.id} className="Food-item">
+                        <div key={special.id} id={special.id} className="food-item">
                             <img src={special.image} alt={special.title} />
-                            <div className="Food-item-header">
-                                <h3 className="Food-item-name">{special.title}</h3>
-                                <h3 className="Food-item-price">${special.price}</h3>
+                            <div className="food-item-header">
+                                <h3 className="food-item-name">{special.title}</h3>
+                                <h3 className="food-item-price">${special.price}</h3>
                             </div>
                             <p>{special.description}</p>
                             <strong>Order a delivery</strong>
