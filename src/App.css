@@ -191,6 +191,12 @@ input, select {
   font-size: 10px;
 }
 
+.confirmation {
+  padding: 12px 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .submit-btn {
   width: 180px;
   height: 40px;
