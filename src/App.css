@@ -2,13 +2,14 @@
   text-align: center;
 }
 
-.button {
+button {
   width: 150px;
   height: 40px;
   border: 1px solid black;
   border-radius: 4px;
   background-color: #F4CE14;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .reserve-text {
@@ -97,6 +98,7 @@ header {
 }
 
 /* Main section */
+
 main {
   max-width: 1080px;
   margin: 0 auto;
@@ -139,4 +141,69 @@ main {
 
 .food-item strong {
   margin-top: auto;
+}
+
+/* Booking page */
+form {
+  max-width: 1080px;
+  margin: 0 auto;
+  margin-bottom: 36px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 24px;
+  padding-bottom: 24px;
+}
+
+label {
+  align-self: start;
+  margin-left: 4px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+sup {
+  position: relative;
+  left: 1px;
+  top: -3px;
+  vertical-align: baseline;
+  color: red;
+  font-size: 95%;
+  line-height: 0;
+}
+
+input, select {
+  border: 1px solid #EDEFEE;
+  border-radius: 4px;
+  height: 32px;
+  padding: 0 8px;
+}
+
+.field-error {
+  position: absolute;
+  margin-left: 4px;
+  bottom: 0px;
+  color: red;
+  font-size: 10px;
+}
+
+.submit-btn {
+  width: 180px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #F4CE14;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn:disabled, .submit-btn[disabled] {
+  border: 1px solid #EDEFEE;
+  background-color: #CCCCCC;
+  color: #666666;
+  cursor: not-allowed;
 }

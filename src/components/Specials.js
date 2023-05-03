@@ -29,7 +29,7 @@ const Specials = () => {
         <main>
            <section className="main-header">
                 <h1>This week's specials!</h1>
-                <button className="button">Online Menu</button>
+                <button>Online Menu</button>
            </section>
            <section className="main-menu">
                 {specials.map(special => {

@@ -1,10 +1,10 @@
 const ShortDescription = (props) => {
     return (
         <div>
-            <h3>{props.location}</h3>
-            <p>{props.description}</p>
+            <h3>{props.subheading}</h3>
+            <p>{props.text}</p>
         </div>
     )
 }
 
-export default ShortDescription
+export default ShortDescription;
