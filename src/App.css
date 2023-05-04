@@ -183,12 +183,19 @@ input, select {
   padding: 0 8px;
 }
 
-.field-error {
+.field-error, .message {
   position: absolute;
   margin-left: 4px;
   bottom: 0px;
-  color: red;
   font-size: 10px;
+}
+
+.field-error {
+  color: red;
+}
+
+.message {
+  color: black;
 }
 
 .confirmation {
@@ -208,8 +215,8 @@ input, select {
 }
 
 .submit-btn:disabled, .submit-btn[disabled] {
-  border: 1px solid #EDEFEE;
-  background-color: #CCCCCC;
+  border: 1px solid #F4CE14;
+  background-color: #EDEFEE;
   color: #666666;
   cursor: not-allowed;
 }

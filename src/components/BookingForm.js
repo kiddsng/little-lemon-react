@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { validateEmail, validateDate } from "../utils";
 import ErrorMessage from "./ErrorMessage";
+import BookingSlot from "./BookingSlot";
+import UnavailableMessage from "./UnavailableMessage";
 import ConfirmationMessage from "./ConfirmationMessage";
 
-const BookingForm = () => {
+const BookingForm = (props) => {
     const [resName, setResName] = useState({
         value: "", isTouched: false
     });
@@ -11,21 +13,20 @@ const BookingForm = () => {
         value: "", isTouched: false
     });
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-    const [time, setTime] = useState("11:00");
     const [numOfGuests, setNumOfGuests] = useState(1);
     const [occasion, setOccasion] = useState("None");
     const [remarks, setRemarks] = useState("");
 
+    // Function to validate that the form is valid
     const getIsFormValid = () => {
         return (
             resName.value.length >= 1 &&
             validateEmail(email.value) &&
-            validateDate(date) &&
-            time &&
-            numOfGuests
+            validateDate(date)
         );
     };
 
+    // Function to clear the form upon submission
     const clearForm = () => {
         setResName({
             value: "", isTouched: false
@@ -34,16 +35,21 @@ const BookingForm = () => {
             value: "", isTouched: false
         });
         setDate(new Date().toISOString().split("T")[0]);
-        setTime("11:00");
         setNumOfGuests(1);
         setOccasion("None");
         setRemarks("");
     };
 
+    // Function to handle the form submission
+    // includes resetting the select time input
     const handleSubmit = (e) => {
         e.preventDefault();
         alert(`Your table is reserved! A confirmation email will be sent to ${email.value}.`)
         clearForm();
+        props.dispatch({
+            type: "reserve",
+            time: props.times.selectedTime
+        });
     };
 
     return (
@@ -66,20 +72,12 @@ const BookingForm = () => {
             </div>
             <div className="field">
                 <label htmlFor="res-time">Choose time<sup>*</sup></label>
-                <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="21:00">21:00</option>
-                    <option value="22:00">22:00</option>
+                <select id="res-time" value={props.times.selectedTime} onChange={(e) => {props.dispatch({type: "select", time: e.target.value})}}>
+                    {props.times.availableTimes.map(availableTime => {
+                        return <BookingSlot key={availableTime} id={availableTime} availableTime={availableTime} />
+                    })}
                 </select>
+                <UnavailableMessage times={props.times.bookedTimes} />
             </div>
             <div className="field">
                 <label htmlFor="res-guests">Number of guests<sup>*</sup></label>
@@ -97,7 +95,7 @@ const BookingForm = () => {
                 <label htmlFor="res-remarks">Remarks</label>
                 <input id="res-remarks" name="res-remarks" type="textarea" placeholder="Feel free to leave a remark for extra instructions/comments (e.g., Please provide facilities for one wheelchair-bound guest.)" value={remarks} onChange={(e) => setRemarks(e.target.value)} />
             </div>
-            {getIsFormValid() ? <ConfirmationMessage numOfGuests={numOfGuests} date={date} time={time} resName={resName.value} /> : null}
+            {getIsFormValid() ? <ConfirmationMessage numOfGuests={numOfGuests} date={date} time={props.times.selectedTime} resName={resName.value} /> : null}
             <button type="submit" className="submit-btn" disabled={!getIsFormValid()}>
                 Make your reservation
             </button>
