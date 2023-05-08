@@ -15,7 +15,7 @@ const BookingPage = (props) => {
                     <ShortDescription subheading={subheading} text={text} />
                 </section>
             </header>
-            <BookingForm times={props.state} dispatch={props.dispatch}/>
+            <BookingForm times={props.state} dispatch={props.dispatch} />
         </div>
     )
 }

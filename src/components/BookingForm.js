@@ -77,7 +77,7 @@ const BookingForm = (props) => {
                         return <BookingSlot key={availableTime} id={availableTime} availableTime={availableTime} />
                     })}
                 </select>
-                <UnavailableMessage times={props.times.bookedTimes} />
+                <UnavailableMessage times={props.times.bookedTimes.join(", ")} />
             </div>
             <div className="field">
                 <label htmlFor="res-guests">Number of guests<sup>*</sup></label>
@@ -101,6 +101,6 @@ const BookingForm = (props) => {
             </button>
         </form>
     )
-}
+};
 
 export default BookingForm;
