@@ -7,7 +7,7 @@ import HomePage from "./components/HomePage";
 import BookingPage from "./components/BookingPage";
 
 // Function to handle the state change for availableTimes
-const updateTimes = (state, action) => {
+export const updateTimes = (state, action) => {
   switch (action.type) {
     // When user selects a time
     case "select": {
@@ -35,7 +35,7 @@ const updateTimes = (state, action) => {
 };
 
 // Function to create the initial state for times (includes availableTimes)
-const initializeTimes = () => {
+export const initializeTimes = () => {
   return {
     selectedTime: "11:00",
     availableTimes: [
