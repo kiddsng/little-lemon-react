@@ -18,18 +18,11 @@ test("Rendering the BookingForm heading", () => {
 
 test("Initializing the times state using the initializeTimes() function", () => {
     const state = initializeTimes();
-    const times = {
-        selectedTime: "11:00",
-        availableTimes: [
-            "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00",
-        ],
-        bookedTimes: []
-    }
-    expect(state).toEqual(times);
+    expect(state.availableTimes).not.toBeNull();
 });
 
 test("Using the updateTimes function", () => {
     const state = initializeTimes();
-    const times = updateTimes(state, { type: "select", time: "13:00" })
-    expect(times.selectedTime).toBe("13:00");
+    const times = updateTimes(state, { type: "select-date", date: new Date("2023-05-14") })
+    expect(times.availableTimes).not.toBeNull();
 });

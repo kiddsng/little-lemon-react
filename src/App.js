@@ -12,14 +12,6 @@ import { fetchAPI, submitAPI } from "./utils";
 // Function to handle the state change for availableTimes
 export const updateTimes = (state, action) => {
   switch (action.type) {
-    // When the app initializes
-    case "initialize": {
-      return {
-        ...state,
-        availableTimes: action.availableTimes,
-        selectedTime: action.availableTimes[0]
-      }
-    }
     // When user selects a date (checks for bookedTimes)
     case "select-date": {
       let selectedDateBookedTimes = [];
@@ -63,11 +55,13 @@ export const updateTimes = (state, action) => {
   }
 };
 
-// Function to create the initial state for times (includes availableTimes)
+// Function to create the initial state for times (includes availableTimes) using fetchAPI
 export const initializeTimes = () => {
+  const data = fetchAPI(new Date());
+
   return {
-    selectedTime: "",
-    availableTimes: [],
+    selectedTime: data[0],
+    availableTimes: data,
     bookedTimes: []
   };
 };
@@ -75,12 +69,6 @@ export const initializeTimes = () => {
 function App() {
   // initialize times state and dispatch function
   const [state, dispatch] = useReducer(updateTimes, null, initializeTimes);
-
-  // initialize availableTimes in times state using fetchAPI
-  useEffect(() => {
-    const data = fetchAPI(new Date());
-    dispatch({ type: "initialize", availableTimes: data });
-  }, []);
 
   // Function to navigate to "./confirmedbooking" upon submitting the booking form
   const navigate = useNavigate();
