@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 
 import HomePage from "./components/HomePage";
 import BookingPage from "./components/BookingPage";
