@@ -1,10 +1,9 @@
 import Nav from "./Nav";
 import ShortDescription from "./ShortDescription";
-import BookingForm from "./BookingForm";
 
-const BookingPage = (props) => {
+const ConfirmedBooking = () => {
     const subheading = "Reserve a Table";
-    const text = "Fill in the details below";
+    const text = "Your booking has been confirmed";
 
     return (
         <div>
@@ -15,9 +14,8 @@ const BookingPage = (props) => {
                     <ShortDescription subheading={subheading} text={text} />
                 </section>
             </header>
-            <BookingForm times={props.state} dispatch={props.dispatch} submitForm={props.submitForm} />
         </div>
     )
 }
 
-export default BookingPage;
+export default ConfirmedBooking;

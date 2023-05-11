@@ -17,6 +17,28 @@ const BookingForm = (props) => {
     const [occasion, setOccasion] = useState("None");
     const [remarks, setRemarks] = useState("");
 
+    // Function to handle the date change
+    const handleDateChange = (e) => {
+        setDate(e.target.value);
+        props.dispatch({
+            type: "select-date",
+            date: new Date(date),
+        });
+    };
+
+    // Function to generate unavailable timeings based on selected date
+    const generateUnavailableTimes = () => {
+        let unavailableTimes = [];
+
+        // check for the selected date in bookedTimes
+        for (var i = 0; i < props.times.bookedTimes.length; i++) {
+            if (props.times.bookedTimes[i].date === date) {
+                unavailableTimes.push(props.times.bookedTimes[i].time);
+            };
+        };
+        return unavailableTimes.join(", ");
+    };
+
     // Function to validate that the form is valid
     const getIsFormValid = () => {
         return (
@@ -40,16 +62,25 @@ const BookingForm = (props) => {
         setRemarks("");
     };
 
-    // Function to handle the form submission
+    // Function to handle the form submission (including submitAPI(formData))
     // includes resetting the select time input
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(`Your table is reserved! A confirmation email will be sent to ${email.value}.`)
-        clearForm();
         props.dispatch({
             type: "reserve",
+            date: date,
             time: props.times.selectedTime
         });
+        props.submitForm({
+            firstName: resName.value,
+            email: email.value,
+            date: date,
+            time: props.times.selectedTime,
+            numberOfGuests: numOfGuests,
+            occasion: occasion,
+            remarks: remarks
+        });
+        clearForm();
     };
 
     return (
@@ -67,17 +98,17 @@ const BookingForm = (props) => {
             </div>
             <div className="field">
                 <label htmlFor="res-date">Choose date<sup>*</sup></label>
-                <input id="res-date" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+                <input id="res-date" type="date" value={date} onChange={handleDateChange}/>
                 {!validateDate(date) ? <ErrorMessage errorMessage="The date selected is unavailable." /> : null}
             </div>
             <div className="field">
                 <label htmlFor="res-time">Choose time<sup>*</sup></label>
-                <select id="res-time" value={props.times.selectedTime} onChange={(e) => {props.dispatch({type: "select", time: e.target.value})}}>
+                <select id="res-time" value={props.times.selectedTime} onChange={(e) => {props.dispatch({type: "select-time", time: e.target.value})}}>
                     {props.times.availableTimes.map(availableTime => {
                         return <BookingSlot key={availableTime} id={availableTime} availableTime={availableTime} />
                     })}
                 </select>
-                <UnavailableMessage times={props.times.bookedTimes.join(", ")} />
+                <UnavailableMessage times={generateUnavailableTimes()} />
             </div>
             <div className="field">
                 <label htmlFor="res-guests">Number of guests<sup>*</sup></label>
