@@ -6,7 +6,7 @@ const ConfirmedBooking = () => {
     const text = "Your booking has been confirmed";
 
     return (
-        <div>
+        <>
             <Nav />
             <header>
                 <section className="header-info">
@@ -14,7 +14,7 @@ const ConfirmedBooking = () => {
                     <ShortDescription subheading={subheading} text={text} />
                 </section>
             </header>
-        </div>
+        </>
     )
 }
 

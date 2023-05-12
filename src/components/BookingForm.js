@@ -127,7 +127,7 @@ const BookingForm = (props) => {
                 <input id="res-remarks" name="res-remarks" type="textarea" placeholder="Feel free to leave a remark for extra instructions/comments (e.g., Please provide facilities for one wheelchair-bound guest.)" value={remarks} onChange={(e) => setRemarks(e.target.value)} />
             </div>
             {getIsFormValid() ? <ConfirmationMessage numOfGuests={numOfGuests} date={date} time={props.times.selectedTime} resName={resName.value} /> : null}
-            <button type="submit" className="submit-btn" disabled={!getIsFormValid()}>
+            <button type="submit" className="submit-btn" disabled={!getIsFormValid()} aria-label="Make your reservation on click">
                 Make your reservation
             </button>
         </form>

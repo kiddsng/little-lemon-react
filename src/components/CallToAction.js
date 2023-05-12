@@ -7,14 +7,14 @@ const CallToAction = () => {
 
     return (
         <header>
-            <section className="header-info">
+            <div className="header-info">
                 <h1>Little Lemon</h1>
                 <ShortDescription subheading={subheading} text={text} />
                 <button><Link to="/booking" className="reserve-text">Reserve a Table</Link></button>
-            </section>
-            <section className="header-image">
+            </div>
+            <div className="header-image">
                 <img src={require("../assets/restaurant_food.jpg")} alt="Little Lemon restaurant" />
-            </section>
+            </div>
         </header>
     );
 };

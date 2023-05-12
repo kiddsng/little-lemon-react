@@ -7,16 +7,16 @@ const BookingPage = (props) => {
     const text = "Fill in the details below";
 
     return (
-        <div>
+        <>
             <Nav />
             <header>
-                <section className="header-info">
+                <div className="header-info">
                     <h1>Little Lemon</h1>
                     <ShortDescription subheading={subheading} text={text} />
-                </section>
+                </div>
             </header>
             <BookingForm times={props.state} dispatch={props.dispatch} submitForm={props.submitForm} />
-        </div>
+        </>
     )
 }
 
