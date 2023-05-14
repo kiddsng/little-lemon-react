@@ -1,10 +1,38 @@
-# Getting Started with Create React App
+# Little Lemon Restaurant
+
+Little Lemon Restaurant is a front-end development capstone project under the Meta Upskill 2022 course.
+
+It is a React-powered website developed for the Little Lemon restaurant to display their special menu and reserve a table online.
+
+This project is a final test to evaluate the course learners' understanding and knowledge of the front-end development course and to develop a functional website powered by React.js.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Table of Contents
 
+- [Technologies](#technologies)
+- [Problem](#problem)
+- [Approach](#approach)
+- [Setup](#setup)
+
+## Technologies
+The project is built with:
+- React 18.2.0
+- Simple HTML and CSS
+- JavaScript
+
+## Problem
+The Little Lemon Restaurant wants to have a website that has features such as reserving a table online. However, such features have not been implemented, and customers are complaining to the restaurant about the inconvenience. The objective of this project is to create a website with a function that allows users to reserve a table online.
+
+## Approach
+The project specifies to use React and any necessary modules (e.g., react-router-dom and jest) to develop a functional feature that allows users to easily reserve a table online.
+
+## Setup
 In the project directory, you can run:
+
+### `git clone`
+
+Clones the project repository as a local copy to your machine.
 
 ### `npm start`
 
