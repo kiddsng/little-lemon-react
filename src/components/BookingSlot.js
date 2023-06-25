@@ -1,6 +1,6 @@
-const BookingSlot = (props) => {
+const BookingSlot = ({ availableTime }) => {
     return (
-        <option value={props.availableTime}>{props.availableTime}</option>
+        <option value={availableTime}>{availableTime}</option>
     );
 };
 

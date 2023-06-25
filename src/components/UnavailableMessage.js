@@ -1,6 +1,8 @@
-const UnavailableMessage = (props) => {
+import { Text } from "@chakra-ui/react";
+
+const UnavailableMessage = ({ times }) => {
     return (
-        <p className="message">These timings are unavailable: {props.times}.</p>
+        <Text color="red" fontSize="sm" mt={4}>Unavailable timings: {times}</Text>
     )
 }
 

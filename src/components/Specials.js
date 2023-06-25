@@ -1,53 +1,74 @@
-import Bruchetta from "../assets/bruchetta.svg";
+import {
+	Card,
+	CardBody,
+	CardFooter,
+	Flex,
+	Heading,
+	Image,
+	Text,
+} from "@chakra-ui/react";
 
-const specials = [
-    {
-        id: "greek-salad",
-        title: "Greek salad",
-        description: "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-        price: 12.99,
-        image: require("../assets/greek salad.jpg")
-    },
-    {
-        id: "bruchetta",
-        title: "Bruchetta",
-        description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
-        price: 5.99,
-        image: Bruchetta
-    },
-    {
-        id: "lemon-dessert",
-        title: "Lemon dessert",
-        description: "This comes straight from grandma's recipe book, every last ingredients has been sourced and is as authentic as can be imagined.",
-        price: 4.99,
-        image: require("../assets/lemon dessert.jpg")
-    },
-]
+import { specials } from "../constants";
 
 const Specials = () => {
-    return (
-        <main>
-           <section className="main-header">
-                <h1>This week's specials!</h1>
-                <button>Online Menu</button>
-           </section>
-           <section className="main-menu">
-                {specials.map(special => {
-                    return (
-                        <div key={special.id} id={special.id} className="food-item">
-                            <img src={special.image} alt={special.title} />
-                            <div className="food-item-header">
-                                <h3 className="food-item-name">{special.title}</h3>
-                                <h3 className="food-item-price">${special.price}</h3>
-                            </div>
-                            <p>{special.description}</p>
-                            <strong>Order a delivery</strong>
-                        </div>
-                    )
-                })}
-           </section>
-        </main>
-    );
+	return (
+		<section>
+			<Flex
+				direction="column"
+				w="100%"
+				maxW="1080px"
+				mx="auto"
+				my={{ base: 6, md: 24 }}
+				px={6}
+			>
+				<Heading as="h2" size="3xl" fontWeight="medium">
+					This week's specials!
+				</Heading>
+				<Flex
+					direction={["column", "row"]}
+					wrap="wrap"
+					justify={["center", "space-between"]}
+					align={["center", "stretch"]}
+					gap={4}
+					mt={4}
+				>
+					{specials.map((special) => (
+						<Card
+							key={special.id}
+							id={special.id}
+							w="330px"
+							h="540px"
+							rounded="2xl"
+						>
+							<Image
+								src={special.image}
+								alt={special.title}
+								h="240px"
+								fit="cover"
+								align="center"
+								roundedTop="2xl"
+								ignoreFallback
+							/>
+							<CardBody>
+								<Flex direction="row" justify="space-between" align="center">
+									<Heading as="h3" size="lg">
+										{special.title}
+									</Heading>
+									<Text color="#F4CE14" fontSize="lg">
+										${special.price}
+									</Text>
+								</Flex>
+								<Text mt={6}>{special.description}</Text>
+							</CardBody>
+							<CardFooter>
+								<strong>Order a delivery</strong>
+							</CardFooter>
+						</Card>
+					))}
+				</Flex>
+			</Flex>
+		</section>
+	);
 };
 
 export default Specials;
